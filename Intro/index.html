@@ -4,8 +4,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Learning vue</title>
-
     <script src="https://unpkg.com/vue@next"></script>
+    <style>
+      .box {
+        padding: 100px 0;
+        width: 400px;
+        text-align: center;
+        background: #ddd;
+        margin: 20px;
+        display: inline-block;
+      }
+    </style>
   </head>
   <body>
     <h1>Vue!</h1>
@@ -13,11 +22,16 @@
     <div id="app">
       <div v-if="showBooks">
         <!-- v-if out the dom -->
-        <p>{{ title }} - {{ author }} - {{ age }} - {{ addSomething }}</p>
+        <p>
+          {{ title }} - {{ author }} - {{ age }} -
+          <span v-show="showSomething">{{ addSomething }}</span>
+          <!-- v-show for repeated interactivity eg button, dropdown etc-->
+        </p>
       </div>
 
       <button @click="toggleShowBooks">
         <span v-if="showBooks">Hide Books</span>
+        <!-- v-if for authentication etc used less frequently-->
         <!-- <span v-if="!showBooks">Show Books</span> -->
         <span v-else>Show Books</span>
       </button>
@@ -33,6 +47,16 @@
       <div @click="changeAuthor">Change author</div>
       <div @click="addJohn('addJ')">Add something</div>
       <!--"v-on" allows reaction to different types of events-->
+
+      <br />
+      <!-- mouse events -->
+      <div class="box" @mouseover="handleEvent($event, 5)">
+        mouseover (enter)
+      </div>
+      <!-- because e is the first parameter automatically, this is the way to add custom parameters/arguments-->
+      <div class="box" @mouseleave="handleEvent">mouseleave</div>
+      <div class="box" @dblclick="handleEvent">double click</div>
+      <div class="box" @mousemove="handleMousemove">Postion: {{x}}, {{y}}</div>
     </div>
 
     <script src="app.js"></script>

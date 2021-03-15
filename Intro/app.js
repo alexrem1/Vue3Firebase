@@ -1,6 +1,12 @@
 const app = Vue.createApp({
-  //data functions
-  //   template: "<h2>I am the template</h2>" // instead create template directly
+  // data functions
+  data() {
+    return {
+      title: "The Final Empire",
+      author: "Brandon",
+      age: 45,
+    };
+  },
 });
 
 app.mount("#app");

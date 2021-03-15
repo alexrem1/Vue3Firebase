@@ -10,7 +10,16 @@
     <h1>Vue!</h1>
 
     <div id="app">
-      <p>{{ title }} - {{ author }} - {{ age }}</p>
+      <p>{{ title }} - {{ author }} - {{ age }} - {{ addSomething }}</p>
+
+      <button v-on:click="age++" class="margi">Increase age</button>
+      <button v-on:click="age--">Decrease age</button>
+      <div @click="title= `Harry Potter and the Philosopher's Stone`">
+        Change book title
+      </div>
+      <div @click="changeAuthor">Change author</div>
+      <div @click="addJohn('addJ')">Add something</div>
+      <!--"v-on" allows reaction to different types of events-->
     </div>
     <script src="app.js"></script>
   </body>

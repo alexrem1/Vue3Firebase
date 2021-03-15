@@ -5,7 +5,16 @@ const app = Vue.createApp({
       title: "The Final Empire",
       author: "Brandon",
       age: 45,
+      addSomething: "",
     };
+  },
+  methods: {
+    changeAuthor() {
+      this.author = "JK Rowling";
+    },
+    addJohn(addName) {
+      this.addSomething = addName;
+    },
   },
 });
 

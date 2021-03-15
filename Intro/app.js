@@ -69,6 +69,12 @@ const app = Vue.createApp({
       book.isFav = !book.isFav;
     },
   },
+  // computed property is a property that depends on other data and when that other data changes eg books, filteredBooks updates
+  computed: {
+    filteredBooks() {
+      return this.books.filter((book) => book.isFav);
+    },
+  },
 });
 
 app.mount("#app");

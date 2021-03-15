@@ -22,11 +22,19 @@
     <div id="app">
       <div v-if="showBooks">
         <!-- v-if out the dom -->
-        <p>
+        <!-- <p>
           {{ title }} - {{ author }} - {{ age }} -
           <span v-show="showSomething">{{ addSomething }}</span>
-          <!-- v-show for repeated interactivity eg button, dropdown etc-->
-        </p>
+          v-show for repeated interactivity eg button, dropdown etc
+        </p> -->
+        <ul>
+          <li v-for="book in books">
+            <h3>{{ book.title }}</h3>
+            <p>{{book.author}}</p>
+            <p>{{book.age}}</p>
+            <span v-show="showSomething">{{ addSomething }}</span>
+          </li>
+        </ul>
       </div>
 
       <button @click="toggleShowBooks">
@@ -39,11 +47,9 @@
       <div v-show="showBooks">Currently showing books</div>
       <!-- v-show css d-none/d-block -->
 
-      <button v-on:click="age++">Increase age</button>
-      <button v-on:click="age--">Decrease age</button>
-      <div @click="title= `Harry Potter and the Philosopher's Stone`">
-        Change book title
-      </div>
+      <button v-on:click="books.age++">Increase age</button>
+      <button v-on:click="decreaseAge">Decrease age</button>
+      <div @click="changeTitle">Change book title</div>
       <div @click="changeAuthor">Change author</div>
       <div @click="addJohn('addJ')">Add something</div>
       <!--"v-on" allows reaction to different types of events-->

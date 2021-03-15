@@ -69,3 +69,7 @@ const app = Vue.createApp({
 });
 
 app.mount("#app");
+
+// Challenge - Add to Favs
+// - attach a click event to each li (for each book)
+// - when a user clicks an li, toggle the "isFav" propertly of that

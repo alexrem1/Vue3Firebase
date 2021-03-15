@@ -6,6 +6,7 @@ const app = Vue.createApp({
       author: "Brandon",
       age: 45,
       addSomething: "",
+      showBooks: true,
     };
   },
   methods: {
@@ -14,6 +15,9 @@ const app = Vue.createApp({
     },
     addJohn(addName) {
       this.addSomething = addName;
+    },
+    toggleShowBooks() {
+      this.showBooks = !this.showBooks;
     },
   },
 });

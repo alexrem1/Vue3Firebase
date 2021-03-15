@@ -4,15 +4,28 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Learning vue</title>
+
     <script src="https://unpkg.com/vue@next"></script>
   </head>
   <body>
     <h1>Vue!</h1>
 
     <div id="app">
-      <p>{{ title }} - {{ author }} - {{ age }} - {{ addSomething }}</p>
+      <div v-if="showBooks">
+        <!-- v-if out the dom -->
+        <p>{{ title }} - {{ author }} - {{ age }} - {{ addSomething }}</p>
+      </div>
 
-      <button v-on:click="age++" class="margi">Increase age</button>
+      <button @click="toggleShowBooks">
+        <span v-if="showBooks">Hide Books</span>
+        <!-- <span v-if="!showBooks">Show Books</span> -->
+        <span v-else>Show Books</span>
+      </button>
+
+      <div v-show="showBooks">Currently showing books</div>
+      <!-- v-show css d-none/d-block -->
+
+      <button v-on:click="age++">Increase age</button>
       <button v-on:click="age--">Decrease age</button>
       <div @click="title= `Harry Potter and the Philosopher's Stone`">
         Change book title
@@ -21,6 +34,7 @@
       <div @click="addJohn('addJ')">Add something</div>
       <!--"v-on" allows reaction to different types of events-->
     </div>
+
     <script src="app.js"></script>
   </body>
 </html>

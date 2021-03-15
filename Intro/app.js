@@ -12,18 +12,22 @@ const app = Vue.createApp({
           author: "patrick rothfuss",
           age: 40,
           img: "assets/1.jpg",
+          isFav: true,
         },
+
         {
           title: "the way of kings",
           author: "brandon sanderson",
           age: 60,
           img: "assets/2.jpg",
+          isFav: false,
         },
         {
           title: "the final empire",
           author: "brandon sanderson",
           age: 64,
           img: "assets/3.jpg",
+          isFav: true,
         },
       ],
       addSomething: "",

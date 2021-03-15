@@ -5,16 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Learning vue</title>
     <script src="https://unpkg.com/vue@next"></script>
-    <style>
-      .box {
-        padding: 100px 0;
-        width: 400px;
-        text-align: center;
-        background: #ddd;
-        margin: 20px;
-        display: inline-block;
-      }
-    </style>
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <h1>Vue!</h1>
@@ -31,7 +22,7 @@
           v-show for repeated interactivity eg button, dropdown etc
         </p> -->
         <ul>
-          <li v-for="book in books">
+          <li v-for="book in books" :class="{fav: book.isFav}">
             <img :src="book.img" :alt="book.title" />
             <h3>{{ book.title }}</h3>
             <p>{{book.author}}</p>

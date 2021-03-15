@@ -20,6 +20,9 @@
     <h1>Vue!</h1>
 
     <div id="app">
+      <!-- Attribute binding eg "v-bind:" or ":" for short-->
+      <!-- <a :href="url">Search</a> -->
+
       <div v-if="showBooks">
         <!-- v-if out the dom -->
         <!-- <p>
@@ -29,6 +32,7 @@
         </p> -->
         <ul>
           <li v-for="book in books">
+            <img :src="book.img" :alt="book.title" />
             <h3>{{ book.title }}</h3>
             <p>{{book.author}}</p>
             <p>{{book.age}}</p>

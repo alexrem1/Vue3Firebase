@@ -2,13 +2,29 @@ const app = Vue.createApp({
   // data functions
   data() {
     return {
+      url: "http://www.google.com",
       // title: "The Final Empire",
       // author: "Brandon",
       // age: 45,
       books: [
-        { title: "name of the wind", author: "patrick rothfuss", age: 40 },
-        { title: "the way of kings", author: "brandon sanderson", age: 60 },
-        { title: "the final empire", author: "brandon sanderson", age: 64 },
+        {
+          title: "name of the wind",
+          author: "patrick rothfuss",
+          age: 40,
+          img: "assets/1.jpg",
+        },
+        {
+          title: "the way of kings",
+          author: "brandon sanderson",
+          age: 60,
+          img: "assets/2.jpg",
+        },
+        {
+          title: "the final empire",
+          author: "brandon sanderson",
+          age: 64,
+          img: "assets/3.jpg",
+        },
       ],
       addSomething: "",
       showBooks: true,

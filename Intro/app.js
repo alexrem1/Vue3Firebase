@@ -38,10 +38,16 @@ const app = Vue.createApp({
     };
   },
   methods: {
+    // changeAuthor() {
+    //   this.author = "JK Rowling";
+    // },
     changeAuthor() {
       this.books[1].author = "JK Rowling";
       this.books[0].author = "How to be number 1";
     },
+    // changeTitle() {
+    //   this.title = "Harry Potter and the Philosopher's Stone"
+    // }
     changeTitle() {
       this.books[2].title = "Harry Potter and the Philosopher's Stone";
     },

@@ -31,7 +31,7 @@ export default {
     },
     stopTimer() {
       clearInterval(this.timer);
-      console.log(this.reactionTime);
+      this.$emit("end", this.reactionTime);
     },
   },
   //   // fires when any data inside our component is updated

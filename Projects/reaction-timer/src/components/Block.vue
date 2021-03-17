@@ -1,5 +1,5 @@
 <template>
-  <div class="block">
+  <div class="block" v-if="showBlock">
     click me
   </div>
 </template>
@@ -7,6 +7,27 @@
 <script>
 export default {
   props: ["delay"],
+  data() {
+    return {
+      showBlock: false,
+    };
+  },
+  // this will fire when the component has mounted to the dom
+  mounted() {
+    // console.log("component mounted");
+    setTimeout(() => {
+      this.showBlock = true;
+    }, this.delay);
+    console.log(this.delay);
+  },
+  //   // fires when any data inside our component is updated
+  //   updated() {
+  //     console.log("component updated");
+  //   },
+  //   // fires when the component is no longer in the dom or when using vue routing going from page to page using different components
+  //   unmounted() {
+  //     console.log("unmounted");
+  //   },
 };
 </script>
 

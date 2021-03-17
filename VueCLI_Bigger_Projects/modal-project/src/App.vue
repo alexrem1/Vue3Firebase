@@ -1,10 +1,16 @@
 <template>
   <!-- every vue component can contain 3 different parts but must contain a template -->
   <h1>{{ title }}</h1>
+  <p>Welcome...</p>
   <input type="text" ref="name" />
+  <br />
   <button @click="handleClick">click me</button>
-  <Modal :header="header" :text="text" theme="sale" />
-  <!-- //passed in here -->
+  <div v-if="showModal">
+    <Modal :header="header" :text="text" theme="sale" @close="toggleModal" />
+    <!-- //passed in here -->
+  </div>
+  <br />
+  <button @click="toggleModal">open modal</button>
 </template>
 
 <script>
@@ -18,6 +24,7 @@ export default {
       title: "My first vue app :)",
       header: "Sign up for the giveaway",
       text: "some random text",
+      showModal: false,
     };
   },
   methods: {
@@ -26,6 +33,9 @@ export default {
       console.log(this.$refs.name);
       this.$refs.name.classList.add("active");
       this.$refs.name.focus();
+    },
+    toggleModal() {
+      this.showModal = !this.showModal;
     },
   },
 };

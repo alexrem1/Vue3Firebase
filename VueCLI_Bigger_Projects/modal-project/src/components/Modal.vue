@@ -17,6 +17,9 @@ export default {
       // a custom event can be fired from a component and then it can be listened to from the parent component.
       this.$emit("close");
     },
+    closeModalTwo() {
+      this.$emit("closeTwo");
+    },
   },
 };
 </script>

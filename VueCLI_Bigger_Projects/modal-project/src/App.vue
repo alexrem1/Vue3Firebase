@@ -6,6 +6,7 @@
   <br />
   <button @click="handleClick">click me</button>
   <div v-if="showModal">
+    <!-- //passed in here "theme: 'sale'" -->
     <Modal theme="sale" @close="toggleModal">
       <!-- template passed inside here is known as a slot -->
       <h1>Ninja Givaway!</h1>
@@ -16,13 +17,24 @@
         <a href="#">More info</a>
       </template>
     </Modal>
-    <!-- //passed in here -->
+  </div>
+  <div v-if="showModalTwo">
+    <Modal theme="" @close="toggleModalTwo">
+      <h1>Sign up to a newsletter</h1>
+      <p>For updates and promo codes!</p>
+      <template v-slot:links> </template>
+    </Modal>
   </div>
   <br />
   <button @click="toggleModal">open modal</button>
+  <button @click="toggleModalTwo">open modal 2</button>
 </template>
 
 <script>
+// Challenge
+// - create an extra button to open a different modal
+// - use the same modal component but pass in a different template(slot)
+// - use a different method (eg toggleModalTwo) and data (eg showModalTwo)
 import Modal from "./components/Modal.vue";
 
 export default {
@@ -31,9 +43,10 @@ export default {
   data() {
     return {
       title: "My first vue app :)",
-      header: "Sign up for the giveaway",
-      text: "some random text",
+      // header: "Sign up for the giveaway",
+      // text: "some random text",
       showModal: false,
+      showModalTwo: false,
     };
   },
   methods: {
@@ -45,6 +58,9 @@ export default {
     },
     toggleModal() {
       this.showModal = !this.showModal;
+    },
+    toggleModalTwo() {
+      this.showModalTwo = !this.showModalTwo;
     },
   },
 };

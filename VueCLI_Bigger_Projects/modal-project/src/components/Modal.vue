@@ -1,11 +1,17 @@
 <template>
   <div class="backdrop">
-    <div class="modal">
-      <p>modal content</p>
-      <h1>modal content</h1>
+    <div class="modal" :class="{ sale: theme === 'sale' }">
+      <p>{{ header }}</p>
+      <h1>{{ text }}</h1>
     </div>
   </div>
 </template>
+
+<script>
+export default {
+  props: ["header", "text", "theme"], //registered over here
+};
+</script>
 
 <style scoped>
 .modal {
@@ -38,5 +44,14 @@ h1 {
 /* overwrite global css */
 .modal p {
   font-style: normal;
+}
+
+.modal.sale {
+  background: crimson;
+  color: white;
+}
+
+.modal.sale h1 {
+  color: white;
 }
 </style>

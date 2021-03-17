@@ -1,10 +1,10 @@
-// every vue component can contain 3 different parts but must contain a template
-
 <template>
+  <!-- every vue component can contain 3 different parts but must contain a template -->
   <h1>{{ title }}</h1>
   <input type="text" ref="name" />
   <button @click="handleClick">click me</button>
-  <Modal />
+  <Modal :header="header" :text="text" theme="sale" />
+  <!-- //passed in here -->
 </template>
 
 <script>
@@ -16,6 +16,8 @@ export default {
   data() {
     return {
       title: "My first vue app :)",
+      header: "Sign up for the giveaway",
+      text: "some random text",
     };
   },
   methods: {
@@ -29,9 +31,9 @@ export default {
 };
 </script>
 
-// these styles are global and apply to any element on the page. They can be
-scoped to just this component eg
+//
 <style>
+/* these styles are global and apply to any element on the page. They can be scoped to just this component */
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;

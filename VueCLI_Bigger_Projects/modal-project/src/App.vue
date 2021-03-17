@@ -5,7 +5,7 @@
   <input type="text" ref="name" />
   <br />
   <button @click="handleClick">click me</button>
-  <div v-if="showModal">
+  <teleport to=".modals" v-if="showModal">
     <!-- //passed in here "theme: 'sale'" -->
     <Modal theme="sale" @close="toggleModal">
       <!-- template passed inside here is known as a slot -->
@@ -17,14 +17,14 @@
         <a href="#">More info</a>
       </template>
     </Modal>
-  </div>
-  <div v-if="showModalTwo">
+  </teleport>
+  <teleport to="#modals" v-if="showModalTwo">
     <Modal theme="" @close="toggleModalTwo">
       <h1>Sign up to a newsletter</h1>
       <p>For updates and promo codes!</p>
       <template v-slot:links> </template>
     </Modal>
-  </div>
+  </teleport>
   <br />
   <button @click="toggleModal">open modal</button>
   <button @click="toggleModalTwo">open modal 2</button>
@@ -69,7 +69,8 @@ export default {
 //
 <style>
 /* these styles are global and apply to any element on the page. They can be scoped to just this component */
-#app {
+#app,
+.modals {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

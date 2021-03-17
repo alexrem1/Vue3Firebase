@@ -1,5 +1,5 @@
 <template>
-  <div class="block" v-if="showBlock">
+  <div class="block" v-if="showBlock" @click.self="stopTimer">
     click me
   </div>
 </template>
@@ -10,6 +10,8 @@ export default {
   data() {
     return {
       showBlock: false,
+      timer: null,
+      reactionTime: 0,
     };
   },
   // this will fire when the component has mounted to the dom
@@ -17,8 +19,20 @@ export default {
     // console.log("component mounted");
     setTimeout(() => {
       this.showBlock = true;
+      this.startTimer();
     }, this.delay);
     console.log(this.delay);
+  },
+  methods: {
+    startTimer() {
+      this.timer = setInterval(() => {
+        this.reactionTime += 10;
+      }, 10);
+    },
+    stopTimer() {
+      clearInterval(this.timer);
+      console.log(this.reactionTime);
+    },
   },
   //   // fires when any data inside our component is updated
   //   updated() {

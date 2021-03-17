@@ -6,7 +6,16 @@
   <br />
   <button @click="handleClick">click me</button>
   <div v-if="showModal">
-    <Modal :header="header" :text="text" theme="sale" @close="toggleModal" />
+    <Modal theme="sale" @close="toggleModal">
+      <!-- template passed inside here is known as a slot -->
+      <h1>Ninja Givaway!</h1>
+      <p>Grab your ninja swag for half price!</p>
+      <!-- if there is no "default content"  in the "Modal slot template" eg the h1 and p tag above, it will refer to the default content in the Modal.vue component -->
+      <template v-slot:links>
+        <a href="#">Sign up now</a>
+        <a href="#">More info</a>
+      </template>
+    </Modal>
     <!-- //passed in here -->
   </div>
   <br />

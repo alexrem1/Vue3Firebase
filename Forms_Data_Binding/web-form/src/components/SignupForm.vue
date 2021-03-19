@@ -6,10 +6,17 @@
     <label>Password:</label>
     <input type="password" required v-model="password" />
     <input type="twoWay" required v-model="twoWay" />
+
+    <label>Role:</label>
+    <select v-model="role">
+      <option value="Developer">Web Developer</option>
+      <option value="Designer">Web Designer</option>
+    </select>
   </form>
   <p>
     Email: {{ email }} <br />
-    Password: {{ password }}
+    Password: {{ password }} <br />
+    Role: {{ role }}
   </p>
 </template>
 
@@ -20,6 +27,7 @@ export default {
       email: "",
       password: "",
       twoWay: "Bound from data to v-model, as well as v-model to data",
+      role: "Designer",
     };
   },
 };
@@ -43,7 +51,8 @@ label {
   letter-spacing: 1px;
   font-weight: bold;
 }
-input {
+input,
+select {
   display: block;
   padding: 10px 6px;
   width: 100%;

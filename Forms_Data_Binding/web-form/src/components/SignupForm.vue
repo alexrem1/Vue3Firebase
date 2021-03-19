@@ -13,6 +13,12 @@
       <option value="Designer">Web Designer</option>
     </select>
 
+    <label>Skills</label>
+    <input type="text" v-model="tempSkill" @keyup="addSkill" />
+    <!--"@keyup.alt" hold down alt and other key eg f, f will not show-->
+    <div v-for="skill in skills" :key="skill" class="pill">
+      {{ skill }}
+    </div>
     <div class="terms">
       <input type="checkbox" v-model="terms" required />
       <label>Accept terms and conditions</label>
@@ -32,7 +38,7 @@
     Password: {{ password }} <br />
     Role: {{ role }} <br />
     Terms accepted: {{ terms }} <br />
-    Names: {{ names }}
+    <!-- Names: {{ names }} <br /> -->
   </p>
 </template>
 
@@ -46,7 +52,19 @@ export default {
       role: "Designer", // giving the option value makes it default
       terms: false, // true makes it checked by default
       //   names: [],
+      tempSkill: "",
+      skills: [],
     };
+  },
+  methods: {
+    addSkill(e) {
+      if (e.key === "Enter" && this.tempSkill) {
+        if (!this.skills.includes(this.tempSkill)) {
+          this.skills.push(this.tempSkill);
+        }
+        this.tempSkill = "";
+      }
+    },
   },
 };
 </script>

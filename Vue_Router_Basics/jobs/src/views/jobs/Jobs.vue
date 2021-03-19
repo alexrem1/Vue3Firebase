@@ -3,6 +3,7 @@
   <div v-for="job in jobs" :key="job.id">
     <h2>{{ job.title }}</h2>
   </div>
+  <!-- route parameters are the changeable parts of a route address and is denoted as ":id" -->
 </template>
 
 <script>

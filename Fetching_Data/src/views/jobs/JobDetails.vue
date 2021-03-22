@@ -1,8 +1,13 @@
 <template>
-  <h1>{{ job.title }}</h1>
-  <p>The Job ID is {{ id }}</p>
-  <p>{{ job.details }}</p>
-  <!-- OR $route.params.id OR via data or via PROPS-->
+  <div v-if="job">
+    <h1>{{ job.title }}</h1>
+    <p>The Job ID is {{ id }}</p>
+    <p>{{ job.details }}</p>
+    <!-- OR $route.params.id OR via data or via PROPS-->
+  </div>
+  <div v-else>
+    <p>Loading Job Details...</p>
+  </div>
 </template>
 
 <script>

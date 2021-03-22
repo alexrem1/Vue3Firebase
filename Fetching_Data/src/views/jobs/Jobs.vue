@@ -12,13 +12,14 @@
 export default {
   data() {
     return {
-      jobs: [
-        { title: "Ninja UX Designer", id: 1, details: "lorem" },
-        { title: "Ninja Web Developer", id: 2, details: "lorem" },
-        { title: "Ninja Vue Developer", id: 3, details: "lorem" },
-        { title: "Ninja React Developer", id: 4, details: "lorem" },
-      ],
+      jobs: [],
     };
+  },
+  mounted() {
+    fetch("http://localhost:3000/jobs")
+      .then((response) => response.json())
+      .then((data) => (this.jobs = data))
+      .catch((err) => console.log(err.message));
   },
 };
 </script>

@@ -1,6 +1,7 @@
 <template>
-  <h1>Job Details Page</h1>
+  <h1>{{ job.title }}</h1>
   <p>The Job ID is {{ id }}</p>
+  <p>{{ job.details }}</p>
   <!-- OR $route.params.id OR via data or via PROPS-->
 </template>
 
@@ -12,6 +13,17 @@ export default {
   //       id: this.$route.params.id,
   //     };
   //   },
+  data() {
+    return {
+      job: null, // When the page first loads, we're trying to output the title of null, so we need to figure out a way to conditionally output the template, only when we have a value back from the fetch request.
+    };
+  },
+  mounted() {
+    fetch("http://localhost:3000/jobs/" + this.id)
+      .then((response) => response.json())
+      .then((data) => (this.job = data))
+      .catch((err) => console.log(err.message));
+  },
 };
 </script>
 

@@ -1,19 +1,8 @@
-# project-planner
+Root - App.vue + Navbar.vue
 
-## Project setup
-```
-npm install
-```
+Nested inside Root, different Route components - Home.vue(/), AddProject.vue(/add) and EditProject.vue(/projects/:id)
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+Nested inside Home component - FilterNav.vue eg completed or ongoing and SingleProject.vue eg single project in the list
 
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+Block.vue: block that flashes up onto the screen and the user has to click as quickly as they can
+Results.vue: how long the user took to click on that and their rank

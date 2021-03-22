@@ -46,7 +46,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .project {
   margin: 20px auto;
   background: white;

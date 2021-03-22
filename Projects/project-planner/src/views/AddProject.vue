@@ -30,6 +30,9 @@ export default {
         body: JSON.stringify(project),
       })
         .then(() => {
+          this.$emit("edit", this.project.id);
+        })
+        .then(() => {
           this.$router.push("/");
         })
         .catch((err) => console.log(err.message));

@@ -7,7 +7,7 @@ const getPosts = () => {
   const load = async () => {
     // simulate delay
     await new Promise((resolve) => {
-      setTimeout(resolve, 2000);
+      setTimeout(resolve, 500);
     });
     try {
       let data = await fetch("http://localhost:3000/posts");

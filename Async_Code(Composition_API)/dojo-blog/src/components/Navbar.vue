@@ -1,8 +1,11 @@
 <template>
-  <nav class="main-nav">
-    <router-link :to="{ name: 'Home' }">Blogs</router-link>
-    <router-link :to="{ name: 'Create' }">Post a new Blog</router-link>
-  </nav>
+  <header>
+    <h1>The Dojo Blog</h1>
+    <nav class="main-nav">
+      <router-link :to="{ name: 'Home' }">Blogs</router-link>
+      <router-link :to="{ name: 'Create' }">Post a new Blog</router-link>
+    </nav>
+  </header>
 </template>
 
 <script>
@@ -10,19 +13,25 @@ export default {};
 </script>
 
 <style>
-.main-nav {
-  text-align: center;
-  margin: 40px auto;
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 10px;
 }
-.main-nav a {
-  display: inline-block;
+header h1 {
+  color: #dfdfdf;
+  font-size: 48px;
+}
+header a {
+  color: #bbb;
   text-decoration: none;
-  margin: 0 10px;
-  color: #999;
-  font-size: 18px;
+  margin-left: 20px;
 }
-a.router-link-active {
-  border-bottom: 2px solid #00ce89;
-  padding-bottom: 4px;
+header a.router-link-active {
+  color: #444;
+  font-weight: bold;
 }
 </style>

@@ -21,6 +21,7 @@ export default {
     const para = ref(null);
     console.log(para, para.value); // would still be null eg not "returned" yet meaning it's not associated with the dom element yet
     // works with "handleClick" as once the button is clicked, we've already returned it at that point
+    console.log(para, para.value);
 
     // below is not reactive values
     let name = "mario";

@@ -1,46 +1,30 @@
 <template>
   <div class="home">
     <h1>Home</h1>
-    <input type="text" v-model="search" />
-    <p>search term - {{ search }}</p>
-    <div v-for="name in matchingNames" :key="name">
-      <p>{{ name }}</p>
-    </div>
-    <button @click="handleClick">stop watching</button>
+    <PostList :posts="posts" />
   </div>
 </template>
 
 <script>
-import { ref, computed, watch, watchEffect } from "vue";
+import { ref } from "vue";
+// component imports
+import PostList from "../components/PostList.vue";
 
 export default {
   name: "Home",
+  components: { PostList },
   setup() {
-    const search = ref("");
-    const names = ref(["mario", "lunat", "betsy", "maria", "koola", "peach"]);
+    const posts = ref([
+      {
+        title: "welcome to the blog",
+        body:
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce in imperdiet nisi. Vestibulum eu dui dictum, ornare est non, dignissim dui. Donec at ex nulla. Aenean sem tortor, bibendum ac accumsan vel, elementum vel turpis. Nam auctor egestas pulvinar. Aenean placerat finibus finibus. Praesent dictum velit at purus aliquam, sit amet mattis est molestie. Duis a nulla et mauris luctus feugiat nec cursus odio. Nam elementum vitae est eu porttitor. Nulla vestibulum gravida magna eu ultricies. Nunc posuere tincidunt pellentesque. Sed id condimentum nisl, ultricies viverra orci. Fusce sit amet massa ut nibh feugiat elementum ac id est.",
+        id: 1,
+      },
+      { title: "top 5 CSS tips", body: "lorem ipsum", id: 2 },
+    ]);
 
-    // how to stop watching? store the function in a variable and then invoke the function
-    const stopWatch = watch(search, () => {
-      console.log("watch function ran");
-    });
-
-    // this runs initially when the setup functions first runs
-    // however it'll auto watch any value inside it and then run it when that changes
-    // runs right away to get data for the components eg get data from a database and perhaps that resouce relies on a resource id. When the id changes we want to rerun the function to get the new resource from the database
-    const stopEffect = watchEffect(() => {
-      console.log("watchEffect function ran", search.value);
-    });
-
-    const matchingNames = computed(() => {
-      return names.value.filter((name) => name.includes(search.value));
-    });
-
-    const handleClick = () => {
-      stopWatch();
-      stopEffect();
-    };
-
-    return { names, search, matchingNames, handleClick };
+    return { posts };
   },
 };
 </script>

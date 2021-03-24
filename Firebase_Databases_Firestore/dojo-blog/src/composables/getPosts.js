@@ -7,7 +7,10 @@ const getPosts = () => {
 
   const load = async () => {
     try {
-      const res = await projectFirestore.collection("posts").get();
+      const res = await projectFirestore
+        .collection("posts")
+        .orderBy("createdAt", "desc")
+        .get();
 
       // map method allows us to do is take an array and cycle through the array, perform a function on each item whereby we do something with the item and return it and then output a new array based on the new one
       posts.value = res.docs.map((doc) => {

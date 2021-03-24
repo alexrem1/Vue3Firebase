@@ -12,8 +12,9 @@ const firebaseConfig = {
 
 // init firebase
 firebase.initializeApp(firebaseConfig);
+firebase.firestore().settings({ experimentalForceLongPolling: true });
 
 // init firestore service
 const projectFirestore = firebase.firestore();
 
-export default projectFirestore;
+export { projectFirestore };

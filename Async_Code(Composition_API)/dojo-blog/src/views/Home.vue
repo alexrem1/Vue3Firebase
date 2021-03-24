@@ -4,6 +4,8 @@
     <div v-if="error">{{ error }}</div>
     <div v-if="posts.length">
       <PostList :posts="posts" />
+      <TagCloud :posts="posts" />
+      <!--because TagCloud is nested inside "Home" view, it can use the prop which is already inside the "home" component -->
     </div>
     <div v-else><Spinner /></div>
   </div>
@@ -12,12 +14,13 @@
 <script>
 // component imports
 import PostList from "../components/PostList.vue";
+import TagCloud from "../components/TagCloud.vue";
 import getPosts from "../composables/getPosts";
 import Spinner from "../components/Spinner.vue";
 
 export default {
   name: "Home",
-  components: { PostList, Spinner },
+  components: { PostList, Spinner, TagCloud },
   setup() {
     const { posts, error, load } = getPosts();
 
@@ -33,5 +36,10 @@ export default {
   max-width: 1200px;
   margin: 0 auto;
   padding: 10px;
+}
+.layout {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  gap: 20px;
 }
 </style>

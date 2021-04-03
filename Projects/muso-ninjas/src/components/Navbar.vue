@@ -1,15 +1,21 @@
 <template>
   <div class="navbar">
     <nav>
-      <h1>
-        <router-link :to="{ name: 'Home' }"
-          ><img src="@/assets/ninjas.png" alt="alt" />
-        </router-link>
-      </h1>
+      <router-link :to="{ name: 'Home' }"
+        ><img src="@/assets/ninjas.png" alt="alt" />
+      </router-link>
       <div class="links">
-        <button @click="handleSubmit">Log out</button>
-        <router-link class="btn" :to="{ name: 'Signup' }">Sign up</router-link>
-        <router-link class="btn" :to="{ name: 'Login' }">Login</router-link>
+        <div v-if="user">
+          <button @click="handleSubmit">Log out</button>
+        </div>
+        <div v-else>
+          <router-link class="btn" :to="{ name: 'Signup' }">
+            Sign up
+          </router-link>
+          <router-link class="btn" :to="{ name: 'Login' }">
+            Login
+          </router-link>
+        </div>
       </div>
     </nav>
   </div>
@@ -17,15 +23,18 @@
 
 <script>
 // challenge
-//  - fire a function called handleSubmit when thr logout button is clicked
-//  - inside the function log the user out and then redirect to the login view
+//  - only show the logout button if we are logged in
+//  - only show the signup and login links if we are not logged in
+//  - use the getUser composable
 
 import useLogout from "../composables/useLogout";
 import { useRouter } from "vue-router";
+import getUser from "../composables/getUser";
 
 export default {
   setup() {
     const { error, logout } = useLogout();
+    const { user } = getUser();
     const router = useRouter();
 
     const handleSubmit = async () => {
@@ -36,7 +45,7 @@ export default {
       }
     };
 
-    return { error, handleSubmit };
+    return { error, handleSubmit, user };
   },
 };
 </script>

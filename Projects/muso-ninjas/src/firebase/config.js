@@ -19,6 +19,7 @@ firebase.initializeApp(firebaseConfig);
 const projectFirestore = firebase.firestore();
 const projectAuth = firebase.auth();
 const projectStorage = firebase.storage();
+firebase.firestore().settings({ experimentalForceLongPolling: true });
 
 // timestamp
 const timestamp = firebase.firestore.FieldValue.serverTimestamp;

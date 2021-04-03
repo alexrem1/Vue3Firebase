@@ -7,7 +7,7 @@
         </router-link>
       </h1>
       <div class="links">
-        <button>Log out</button>
+        <button @click="handleSubmit">Log out</button>
         <router-link class="btn" :to="{ name: 'Signup' }">Sign up</router-link>
         <router-link class="btn" :to="{ name: 'Login' }">Login</router-link>
       </div>
@@ -16,7 +16,29 @@
 </template>
 
 <script>
-export default {};
+// challenge
+//  - fire a function called handleSubmit when thr logout button is clicked
+//  - inside the function log the user out and then redirect to the login view
+
+import useLogout from "../composables/useLogout";
+import { useRouter } from "vue-router";
+
+export default {
+  setup() {
+    const { error, logout } = useLogout();
+    const router = useRouter();
+
+    const handleSubmit = async () => {
+      await logout();
+      if (!error.value) {
+        console.log("User has logged out");
+        router.push({ name: "Login" });
+      }
+    };
+
+    return { error, handleSubmit };
+  },
+};
 </script>
 
 <style scoped>

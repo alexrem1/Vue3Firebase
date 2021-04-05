@@ -12,9 +12,11 @@
 <script>
 import useLogin from "@/composables/useLogin"; // instead of "../../composables/useLogin" because @ represents the root of the project relative to the source folder
 import { ref } from "vue";
+import { useRouter } from "vue-router";
 export default {
   setup() {
     const { error, login, isPending } = useLogin();
+    const router = useRouter();
 
     const email = ref("");
     const password = ref("");
@@ -23,6 +25,7 @@ export default {
       const res = await login(email.value, password.value);
       if (!error.value) {
         console.log("User logged in");
+        router.push({ name: "Home" });
       }
     };
 

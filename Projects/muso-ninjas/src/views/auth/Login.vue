@@ -25,7 +25,7 @@ export default {
       const res = await login(email.value, password.value);
       if (!error.value) {
         console.log("User logged in");
-        router.push({ name: "Home" });
+        router.push({ name: "UserPlaylists" });
       }
     };
 

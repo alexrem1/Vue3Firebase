@@ -11,6 +11,7 @@
           <router-link :to="{ name: 'CreatePlaylist' }">
             Create Playlist
           </router-link>
+          <span>Hi there, {{ user.displayName }}</span>
 
           <button @click="handleSubmit">Log out</button>
         </div>
@@ -28,11 +29,6 @@
 </template>
 
 <script>
-// challenge
-//  - only show the logout button if we are logged in
-//  - only show the signup and login links if we are not logged in
-//  - use the getUser composable
-
 import useLogout from "../composables/useLogout";
 import { useRouter } from "vue-router";
 import getUser from "../composables/getUser";
@@ -81,5 +77,12 @@ nav .links a,
 button {
   margin-left: 16px;
   font-size: 14px;
+}
+span {
+  font-size: 14px;
+  display: inline-block;
+  margin-left: 16px;
+  padding-left: 16px;
+  border-left: 1px solid #eee;
 }
 </style>

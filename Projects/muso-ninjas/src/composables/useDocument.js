@@ -21,8 +21,22 @@ const useDocuments = (collection, id) => {
       error.value = "The document could not be deleted";
     }
   };
+  const updateDoc = async (updates) => {
+    isPending.value = true;
+    error.value = null;
 
-  return { error, isPending, deleteDoc };
+    try {
+      const res = await docRef.update(updates);
+      isPending.value = false;
+      return res;
+    } catch (err) {
+      console.log(err.message);
+      isPending.value = false;
+      error.value = "The document could not be updated";
+    }
+  };
+
+  return { error, isPending, deleteDoc, updateDoc };
 };
 
 export default useDocuments;

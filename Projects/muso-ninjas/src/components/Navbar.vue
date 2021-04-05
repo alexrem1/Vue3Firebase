@@ -1,9 +1,8 @@
 <template>
   <div class="navbar">
     <nav>
-      <router-link :to="{ name: 'Home' }"
-        ><img src="@/assets/ninjas.png" alt="alt" />
-      </router-link>
+      <img src="@/assets/ninjas.png" alt="alt" />
+      <router-link :to="{ name: 'Home' }"><h3>Muso Ninjas</h3> </router-link>
       <div class="links">
         <div v-if="user">
           <router-link :to="{ name: 'UserPlaylists' }">
@@ -70,7 +69,7 @@ nav {
   margin: 0 auto;
 }
 nav img {
-  max-height: 85px;
+  max-height: 100px;
 }
 nav h1 {
   margin-left: 20px;

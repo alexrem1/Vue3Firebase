@@ -30,8 +30,8 @@ export default {
       await updateDoc({
         songs: [...props.playlist.songs, newSong],
       });
-      title.value("");
-      artist.value("");
+      title.value = "";
+      artist.value = "";
     };
 
     return { title, artist, showForm, handleSubmit };
